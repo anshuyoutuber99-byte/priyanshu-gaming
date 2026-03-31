@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Priyanshu Gaming | Free Fire Pro</title>
+
+<meta name="description" content="Free Fire gameplay, tips, live streams - Priyanshu Gaming">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Rajdhani';
+    background:black;
+    color:white;
+}
+
+/* Neon Glow */
+.glow{
+    color:#ff0000;
+    text-shadow:0 0 10px red,0 0 20px red,0 0 40px red;
+}
+
+/* Hero */
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+/* Buttons */
+.btn{
+    padding:15px 30px;
+    margin:10px;
+    border-radius:30px;
+    text-decoration:none;
+    color:white;
+    background:red;
+    box-shadow:0 0 20px red;
+    transition:0.3s;
+}
+.btn:hover{
+    transform:scale(1.1);
+}
+
+/* Cards */
+.card{
+    background:#111;
+    padding:20px;
+    margin:10px;
+    border-radius:15px;
+    box-shadow:0 0 15px red;
+}
+
+/* Section */
+.section{
+    text-align:center;
+    padding:50px;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+    <h1 class="glow">PRIYANSHU GAMING</h1>
+    <p>🔥 Free Fire Pro Player 🔥</p>
+
+    <a href="https://youtube.com/@priyanshuprajapati7-7?sub_confirmation=1" target="_blank" class="btn">Subscribe</a>
+    <a href="https://www.instagram.com/_p_r_a_j_a_p_t_/" target="_blank" class="btn">Instagram</a>
+    <a href="https://ffkipas.my.id/" target="_blank" class="btn">My Website</a>
+</section>
+
+<section class="section">
+    <div class="card">
+        <h2 id="subCount">Loading...</h2>
+        <p>Subscribers</p>
+    </div>
+    <div class="card">
+        <h2 id="viewCount">Loading...</h2>
+        <p>Views</p>
+    </div>
+    <div class="card">
+        <h2 id="videoCount">Loading...</h2>
+        <p>Videos</p>
+    </div>
+</section>
+
+<script>
+const API_KEY = "PASTE_API_KEY";
+const CHANNEL_ID = "PASTE_CHANNEL_ID";
+
+async function loadStats(){
+let url=`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`;
+let res=await fetch(url);
+let data=await res.json();
+
+let s=data.items[0].statistics;
+
+document.getElementById("subCount").innerText=s.subscriberCount;
+document.getElementById("viewCount").innerText=s.viewCount;
+document.getElementById("videoCount").innerText=s.videoCount;
+}
+loadStats();
+</script>
+
+</body>
+</html>
